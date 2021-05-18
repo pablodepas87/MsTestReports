@@ -1,0 +1,138 @@
+@font-face {
+  font-family: klavika;
+  font-weight: inherit;
+  src: url("../font/klavika-light.otf") format("opentype");
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: klavika;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+
+header {
+  top: 0;
+  height: 10%;
+  width: 100%;
+  position: fixed;
+  background-color: red;
+  text-align: center;
+  color: white;
+}
+
+footer {
+
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+
+}
+
+.logomicro {
+	width:30%;
+	height: 30%;
+}
+
+.btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width:15%;
+}
+
+.btn:hover {
+  background-color: #d2de00; /* Green */
+  color: white;
+}
+.selectCustomerBtn {
+	background-color: #a3abb0;
+	color: white;
+}
+
+.customDropDownMenu{
+	width: 15%;
+}
+
+.nav-bar{
+   background-color: white; /*#a3abb0;*/
+   width: 100%;
+   height: 100px;
+   margin: 0px;
+   padding: 0px;
+   line-height: 80px;
+}
+
+.navItemLink{
+  color: #d2de00;; /*#d2de00;*/
+  font-size: 50px;
+  padding-right: 30px;
+}
+
+.navItemLink:hover{
+  color: white;
+  font-size: 50px;
+  text-decoration: none;
+}
+
+.checkIcon{
+  color: green;
+ }
+
+.unCheckIcon{
+  color: orangered;
+ 
+}
+
+.tableTagliavi{
+  text-align: center;
+  font-size: small;
+}
+
+.tableApo th,td{
+  text-align: center;
+  font-size: 12px;
+}
+
+
+thead{
+  background-color: #a3abb0;
+  color: white;
+}
+
+.pdfIcon{
+  font-size: 18px;
+  color: orangered;
+}
+
+.rowFilter {
+  margin: 10px 2% 10px 2%;
+}
+
+.customerLogo{
+  width:10%;
+  height: 10%;
+}
+
+.tagliaviniTableHeader{
+  background-color: #ff5a00 ;
+  color: black ;
+  text-align: center;
+}
+
+.apoTableHeader{
+  background-color: #be0000;
+  color: white;
+  text-align: center;
+}

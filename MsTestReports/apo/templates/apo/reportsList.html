@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block title %}Apo Reports List {% endblock %}
+{% block body %}
+  <div style="text-align: center">
+    {% load static %}
+    <img src="{% static 'images/logo-apo-red-h25.png' %}" >
+  </div>
+  <div class="row" style="margin: 2%;">
+    <div class="col" style="padding: 0">
+        <form method="GET" action="">
+            <input class="form-control" name="query" type="text" placeholder="Search.." style="width: 50%">
+        </form>
+    </div>
+    <div class="col" style="padding: 0">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-end">
+         {% if page_obj.has_previous %}
+            <li class="page-item">
+               <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Next" >&laquo;</a>
+            </li>
+         {% endif %}
+         {% for number in page_obj.paginator.page_range %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ number }}" aria-label="Next">{{ number }}</a>
+            </li>
+         {% endfor %}
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">&raquo;</a>
+            </li>
+        {% endif %}
+      </ul>
+    </nav>
+    </div>
+  </div>
+  <div class="table-responsive-xl shadow" style="margin: 2%">
+	  <table id="myTable" class="table table-bordered tableApo">
+	    <thead class="apoTableHeader">
+	    <tr>
+	      <th>BOARD ID </th>
+	      <th>TESTER NAME</th>
+	      <th>TESTER SURNAME</th>
+	      <th>START TEST</th>
+	      <th>END TEST</th>
+	      <th>TOUCH</th>
+	      <th>BUZZER</th>
+	      <th>USB</th>
+	      <th>FAN</th>
+          <th>ROTARY</th>
+          <th>CERTS<br>DOWNLOADED</th>
+          <th>CERTS ID</th>
+	      <th>SW. VERSION</th>
+          <th>PDF REPORT</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+      {% csrf_token %}
+      {% for report in page_obj %}
+	  	<tr>
+	  		<td>{{ report.board_serial }}</td>
+	  		<td>{{ report.tester_name }}</td>
+	  		<td>{{ report.tester_surname }}</td>
+	  		<td>{{ report.dt_start_test|date:"D d/m/Y" }} {{ report.dt_start_test|time:"H:i" }}</td>
+	  		<td>{{ report.dt_end_test|date:"D d/m/Y" }} {{ report.dt_end_test|time:"H:i" }} </td>
+	  		<td>{% if report.touchscreen %}
+	  		        <i class="fas fa-check-circle checkIcon"></i>
+                {% elif not report.touchscreen %}
+                    <i class="fas fa-times-circle unCheckIcon"></i>
+                {% endif %}
+            </td>
+	  		<td>{% if report.brightness %}
+	  		        <i class="fas fa-check-circle checkIcon"></i>
+                {% elif not report.brightness %}
+                    <i class="fas fa-times-circle unCheckIcon"></i>
+                {% endif %}
+            </td>
+	  		<td>{% if report.usb %}
+	  		        <i class="fas fa-check-circle checkIcon"></i>
+                {% elif not report.usb %}
+                    <i class="fas fa-times-circle unCheckIcon"></i>
+                {% endif %}
+            </td>
+	  		<td>{% if report.fan %}
+	  		        <i class="fas fa-check-circle checkIcon"></i>
+                {% elif not report.fan %}
+                    <i class="fas fa-times-circle unCheckIcon"></i>
+                {% endif %}
+            </td>
+            <td>{% if report.rotary %}
+	  		        <i class="fas fa-check-circle checkIcon"></i>
+                {% elif not report.rotary %}
+                    <i class="fas fa-times-circle unCheckIcon"></i>
+                {% endif %}
+            </td>
+            <td>{% if report.certs_downloaded %}
+	  		        <i class="fas fa-check-circle checkIcon"></i>
+                {% elif not report.certs_downloaded %}
+                    <i class="fas fa-times-circle unCheckIcon"></i>
+                {% endif %}
+            </td>
+	  		<td style="word-break:break-all;">{{ report.certs_id }}</td>
+            <td>{{ report.sw_version }}</td>
+            <td>
+                <a class="pdfIcon" href="{% url 'apo:pdf_report' report.id %}" >
+                    <i class="fa fa-file-pdf" aria-hidden="true"></i>
+                </a>
+            </td>
+	  	</tr>
+      {% endfor %}
+	  </tbody>
+	  </table>
+	</div>
+    {% if page_obj.paginator.count > 10 %}
+    <div class="row" style="margin: 2%;">
+         <div class="col" style="padding: 0">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end">
+                 {% if page_obj.has_previous %}
+                    <li class="page-item">
+                       <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Next" >&laquo;</a>
+                    </li>
+                 {% endif %}
+                 {% for number in page_obj.paginator.page_range %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ number }}" aria-label="Next">{{ number }}</a>
+                    </li>
+                 {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">&raquo;</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </nav>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
