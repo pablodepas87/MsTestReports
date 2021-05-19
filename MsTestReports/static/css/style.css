@@ -136,3 +136,9 @@ thead{
   color: white;
   text-align: center;
 }
+
+.frigomatTableHeader{
+  background-color: #f0810f ;
+  color: black ;
+  text-align: center;
+}

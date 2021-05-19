@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apo.apps.ApoConfig',
     'tagliavini.apps.TagliaviniConfig',
+    'frigomat.apps.FrigomatConfig',
     'rest_framework',
 ]
 
