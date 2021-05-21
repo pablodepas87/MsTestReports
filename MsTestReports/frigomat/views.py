@@ -1,5 +1,4 @@
 from .models import FrigomatReport
-from tagliavini.models import TagliaviniReport
 from django.views import generic
 from django.http import HttpResponse , Http404
 from django.template.loader import get_template
@@ -18,11 +17,11 @@ class ReportsListView(generic.ListView):
     def get_queryset(self):
         query_filter =self.request.GET.get("query",None)
         if query_filter is not None:
-            return TagliaviniReport.objects.filter(Q(board_serial__contains=query_filter)|
+            return FrigomatReport.objects.filter(Q(board_serial__contains=query_filter)|
                                                    Q(tester_name__contains=query_filter)|
                                                    Q(tester_surname__contains=query_filter)).order_by('dt_start_test')
 
-        return TagliaviniReport.objects.order_by('-dt_start_test')
+        return FrigomatReport.objects.order_by('-dt_start_test')
 
 
 class PDFReportView(generic.DetailView):

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Tagliavini Reports List{% endblock %}
+{% block title %}Frigomat Reports List{% endblock %}
 
 {% block body %}
     <div style="text-align: center ; margin-bottom: 0px ; padding-bottom: 0px">
         {% load static %}
-        <img src="{% static 'images/tagliavini.png' %}" class="customerLogo">
+        <img src="{% static 'images/frigomat.png' %}" class="customerLogo">
     </div>
     <div class="row rowFilter" >
         <div class="col" style="padding: 0">
@@ -36,7 +36,7 @@
     </div>
     <div class="table-responsive-xl shadow" style="margin: 2%">
 	  <table class="table table-bordered ">
-	    <thead class="tagliaviniTableHeader">
+	    <thead class="frigomatTableHeader">
 	    <tr>
 	      <th>BOARD ID </th>
 	      <th>TESTER NAME</th>
@@ -86,7 +86,7 @@
             </td>
 	  		<td>{{ report.sw_version }}</td>
             <td>
-                <a class="pdfIcon" href="{% url 'tagliavini:pdfreport' report.id %}">
+                <a class="pdfIcon" href="{% url 'frigomat:pdfreport' report.id %}">
                     <i class="fa fa-file-pdf" aria-hidden="true"></i>
                 </a>
             </td>
