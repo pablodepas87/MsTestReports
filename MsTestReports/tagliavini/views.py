@@ -13,7 +13,7 @@ from .permissions import IsOwnerOrReadOnly
 class ReportsListView(generic.ListView):
     template_name = 'tagliavini/reportsList.html'
     context_object_name = 'report_list'
-    paginate_by = 25
+    paginate_by = 75
     def get_queryset(self):
         query_filter =self.request.GET.get("query",None)
         if query_filter is not None:

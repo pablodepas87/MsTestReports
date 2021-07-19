@@ -3,7 +3,7 @@ from .models import FrigomatReport
 from django.contrib.auth.models import User
 
 
-class FrigomatReportSerializer(serializers.Serializer):
+class FrigomatReportSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.surname')
 
     class Meta:

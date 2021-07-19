@@ -12,7 +12,7 @@ from .permissions import IsOwnerOrReadOnly
 
 class ReportListView(generic.ListView):
     template_name = 'apo/reportsList.html'
-    paginate_by = 25
+    paginate_by = 75
 
     def get_queryset(self):
         query_filter =self.request.GET.get("query", None)

@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path
-from tagliavini import views as tagliaviniViews
+
 app_name = 'frigomat'
 
 urlpatterns = [
